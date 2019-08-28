@@ -1,0 +1,45 @@
+/vendor
+
+# OS X
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows image file caches
+Thumbs.db
+ehthumbs.db
+
+# Folder config file
+Desktop.ini
+
+# Recycle Bin used on file shares
+$RECYCLE.BIN/
+
+# Eclipse
+*.pydevproject
+.project
+.metadata
+tmp/**
+tmp/**/*
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
+
+
+#Composer vendor
+vendor/
+vendor/.git
+
+# PHPStorm
+atlassian-ide-plugin.xml
+
+# VS Code
+.vscode
+
+#NPM
+npm-debug.log
