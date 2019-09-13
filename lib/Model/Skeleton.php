@@ -2,7 +2,6 @@
 
 namespace NCIOCPL\ClinicalTrialSearch\Model;
 
-use ArrayAccess;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Model\ModelInterface;
 
 /**
@@ -10,7 +9,7 @@ use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Model\ModelInterface;
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */
-class Skeleton extends ModelCommon implements ModelInterface, ArrayAccess {
+class Skeleton extends ModelCommon implements ModelInterface {
 
   const DISCRIMINATOR = NULL;
 
@@ -95,13 +94,6 @@ class Skeleton extends ModelCommon implements ModelInterface, ArrayAccess {
     'TermType' => 'getype',
     'Codes' => 'getCodes',
   ];
-
-  /**
-   * Associative array for storing property values.
-   *
-   * @var mixed[]
-   */
-  protected $container = [];
 
   /**
    * Constructor.

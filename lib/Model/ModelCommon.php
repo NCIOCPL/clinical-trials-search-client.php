@@ -2,6 +2,7 @@
 
 namespace NCIOCPL\ClinicalTrialSearch\Model;
 
+use ArrayAccess;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ObjectSerializer;
 
 /**
@@ -9,7 +10,14 @@ use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ObjectSerializer;
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */
-class ModelCommon {
+class ModelCommon implements ArrayAccess {
+
+  /**
+   * Associative array for storing property values.
+   *
+   * @var mixed[]
+   */
+  protected $container = [];
 
   /**
    * Check whether all model properties are valid.
