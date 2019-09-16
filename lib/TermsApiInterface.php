@@ -84,6 +84,6 @@ interface TermsApiInterface {
    * @return array
    *   Of null, HTTP status code, HTTP response headers (array of strings)
    */
-  public function searchTermsByPostWithHttpInfo();
+  public function searchTermsByPost($searchDocument);
 
 }
