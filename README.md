@@ -2,6 +2,24 @@
 
 Provides a PHP wrapper around the [NCI Clinical Trials Search API](https://clinicaltrialsapi.cancer.gov/).
 
+## API
+
+The root API namespace is `NCIOCPL\ClinicalTrialSearch`
+
+### Models
+
+All models appear in the `NCIOCPL\ClinicalTrialSearch\Model` namespace
+
+* `Term`
+* `TermsCollection`
+
+### API Methods
+
+* `TermsApiInterface`
+  * `getTermByTermKey(term_key)` - Retrieves the term with supplied `term_key`.
+  * `searchTermsByPost($searchDocument)` - Search for terms matching the criteria in `searchDocument`.
+
+
 ## Testing
 
 ```bash

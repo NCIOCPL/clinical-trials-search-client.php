@@ -684,35 +684,40 @@ class TermsApi implements TermsApiInterface
         );
     }
 
-    /**
-     * Operation searchTermsByPost
-     *
-     * Search Terms by POST
-     *
-     *
-     * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return void
-     */
-    public function searchTermsByPost()
-    {
-        $this->searchTermsByPostWithHttpInfo();
+  /**
+   * Search for Terms specified in a JSON document.
+   *
+   * @param string $searchDocument
+   *    A JSON document containing search criteria. Property names may match
+   *    any of the parameters specified for searchTermsByGet().
+   *
+   * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   *
+   * @return TermsCollection
+   *   A single TermsCollection object containing zero or more terms matching
+   *   the criteria in $searchDocument.
+   */
+    public function searchTermsByPost($searchDocument) {
+        list($response) = $this->searchTermsByPostWithHttpInfo($searchDocument);
+        return $response;
     }
 
-    /**
-     * Operation searchTermsByPostWithHttpInfo
-     *
-     * Search Terms by POST
-     *
-     *
-     * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException on non-2xx response
-     * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function searchTermsByPostWithHttpInfo()
-    {
-        $returnType = '';
-        $request = $this->searchTermsByPostRequest();
+  /**
+   * Operation searchTermsByPostWithHttpInfo
+   *
+   * Internals of searchTermsByPost().
+   *
+   *
+   * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException on non-2xx response
+   * @throws \InvalidArgumentException
+   *
+   * @return array of null, HTTP status code, HTTP response headers (array of strings)
+   */
+    public function searchTermsByPostWithHttpInfo($searchDocument) {
+
+        $returnType = '\NCIOCPL\ClinicalTrialSearch\Model\TermsCollection';
+        $request = $this->searchTermsByPostRequest($searchDocument);
 
         try {
             $options = $this->createHttpClientOption();
@@ -742,12 +747,34 @@ class TermsApi implements TermsApiInterface
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            $responseBody = $response->getBody();
+            if ($returnType === '\SplFileObject') {
+              $content = $responseBody; //stream goes to serializer
+            } else {
+              $content = $responseBody->getContents();
+              if (!in_array($returnType, ['string', 'integer', 'bool'])) {
+                $content = json_decode($content);
+              }
+            }
+
+            return [
+              ObjectSerializer::deserialize($content, $returnType, []),
+              $response->getStatusCode(),
+              $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
-            switch ($e->getCode()) {
-            }
-            throw $e;
+          switch ($e->getCode()) {
+            case 200:
+              $data = ObjectSerializer::deserialize(
+                $e->getResponseBody(),
+                '\Swagger\Client\Model\Resource',
+                $e->getResponseHeaders()
+              );
+              $e->setResponseObject($data);
+              break;
+          }
+          throw $e;
         }
     }
 
@@ -760,9 +787,9 @@ class TermsApi implements TermsApiInterface
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchTermsByPostAsync()
+    public function searchTermsByPostAsync($searchDocument)
     {
-        return $this->searchTermsByPostAsyncWithHttpInfo()
+        return $this->searchTermsByPostAsyncWithHttpInfo($searchDocument)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -779,10 +806,10 @@ class TermsApi implements TermsApiInterface
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function searchTermsByPostAsyncWithHttpInfo()
+    public function searchTermsByPostAsyncWithHttpInfo($searchDocument)
     {
-        $returnType = '';
-        $request = $this->searchTermsByPostRequest();
+        $returnType = '\NCIOCPL\ClinicalTrialSearch\Model\TermsCollection';
+        $request = $this->searchTermsByPostRequest($searchDocument);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -814,14 +841,14 @@ class TermsApi implements TermsApiInterface
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    protected function searchTermsByPostRequest()
+    protected function searchTermsByPostRequest($searchDocument)
     {
 
         $resourcePath = '/v1/terms';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
-        $httpBody = '';
+        $httpBody = $searchDocument;
         $multipart = false;
 
 
