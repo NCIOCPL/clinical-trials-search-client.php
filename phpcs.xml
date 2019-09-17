@@ -32,7 +32,6 @@
   <file>./test</file>
 
   <!-- Don't try to enfoce rules on the generated API files.-->
-  <exclude-pattern>/lib/*api.php</exclude-pattern>
   <exclude-pattern>/lib/SwaggerGenerated/*</exclude-pattern>
 
 </ruleset>

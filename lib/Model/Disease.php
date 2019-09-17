@@ -18,7 +18,7 @@ class Disease extends ModelCommon implements ModelInterface {
    *
    * @var string
    */
-  protected static $swaggerModelName = 'Term';
+  protected static $swaggerModelName = 'Disease';
 
   /**
    * Mapping property names to their types.
@@ -34,7 +34,7 @@ class Disease extends ModelCommon implements ModelInterface {
     'Name' => 'string',
     'Codes' => 'string[]',
     'AncestorIDs' => 'string[]',
-    'ParentID' => 'string',
+    'ParentID' => 'string[]',
     'Type' => 'string[]',
   ];
 
@@ -62,7 +62,7 @@ class Disease extends ModelCommon implements ModelInterface {
     'Name' => 'name',
     'Codes' => 'codes',
     'AncestorIDs' => 'ancestor_ids',
-    'ParentID' => 'parent_id',
+    'ParentID' => 'parent_ids',
     'Type' => 'type',
   ];
 
