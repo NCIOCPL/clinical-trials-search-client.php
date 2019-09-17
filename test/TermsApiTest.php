@@ -249,7 +249,7 @@ class TermsApiTest extends TestCase {
   /**
    * Error test getTermByTermKey for case where no term key is specified.
    */
-  public function testSearchTermsByPostdBadInput() {
+  public function testSearchTermsByPostBadInput() {
 
     // Mark this test as expected to throw an instance of ApiException.
     $this->expectException(ApiException::class);
