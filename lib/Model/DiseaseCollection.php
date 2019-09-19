@@ -5,7 +5,7 @@ namespace NCIOCPL\ClinicalTrialSearch\Model;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Model\ModelInterface;
 
 /**
- * Model for the Term objects.
+ * Model for the DiseaseCollection objects.
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */

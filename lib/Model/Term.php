@@ -91,7 +91,7 @@ class Term extends ModelCommon implements ModelInterface {
   protected static $getters = [
     'TermKey' => 'getKey',
     'Term' => 'getTerm',
-    'TermType' => 'getype',
+    'TermType' => 'getType',
     'Codes' => 'getCodes',
   ];
 
