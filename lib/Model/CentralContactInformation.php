@@ -5,11 +5,11 @@ namespace NCIOCPL\ClinicalTrialSearch\Model;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Model\ModelInterface;
 
 /**
- * Model for the Disease objects.
+ * Model for the CentralContactInformation objects.
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */
-class Disease extends ModelCommon implements ModelInterface {
+class CentralContactInformation extends ModelCommon implements ModelInterface {
 
   const DISCRIMINATOR = NULL;
 
@@ -18,7 +18,7 @@ class Disease extends ModelCommon implements ModelInterface {
    *
    * @var string
    */
-  protected static $swaggerModelName = 'Disease';
+  protected static $swaggerModelName = 'CentralContactInformation';
 
   /**
    * Mapping property names to their types.
@@ -31,11 +31,10 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $swaggerTypes = [
+    'Email' => 'string',
     'Name' => 'string',
-    'Codes' => 'string[]',
-    'AncestorIDs' => 'string[]',
-    'ParentID' => 'string[]',
-    'Type' => 'string[]',
+    'Phone' => 'string',
+    'Type' => 'string',
   ];
 
   /**
@@ -46,10 +45,9 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $swaggerFormats = [
+    'Email' => NULL,
     'Name' => NULL,
-    'Codes' => NULL,
-    'AncestorIDs' => NULL,
-    'ParentID' => NULL,
+    'Phone' => NULL,
     'Type' => NULL,
   ];
 
@@ -59,11 +57,10 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $attributeMap = [
-    'Name' => 'name',
-    'Codes' => 'codes',
-    'AncestorIDs' => 'ancestor_ids',
-    'ParentID' => 'parent_ids',
-    'Type' => 'type',
+    'Email' => 'central_contact_email',
+    'Name' => 'central_contact_name',
+    'Phone' => 'central_contact_phone',
+    'Type' => 'central_contact_type',
   ];
 
   /**
@@ -76,10 +73,9 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $setters = [
+    'Email' => 'setEmail',
     'Name' => 'setName',
-    'Codes' => 'setCodes',
-    'AncestorIDs' => 'setAncestorIDs',
-    'ParentID' => 'setParentID',
+    'Phone' => 'setPhone',
     'Type' => 'setType',
   ];
 
@@ -93,10 +89,9 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $getters = [
+    'Email' => 'getEmail',
     'Name' => 'getName',
-    'Codes' => 'getCodes',
-    'AncestorIDs' => 'getAncestorIDs',
-    'ParentID' => 'getParentID',
+    'Phone' => 'getPhone',
     'Type' => 'getType',
   ];
 
@@ -108,10 +103,9 @@ class Disease extends ModelCommon implements ModelInterface {
    *   from another instance.
    */
   public function __construct(array $data = NULL) {
+    $this->container['Email'] = isset($data['Email']) ? $data['Email'] : NULL;
     $this->container['Name'] = isset($data['Name']) ? $data['Name'] : NULL;
-    $this->container['Codes'] = isset($data['Codes']) ? $data['Codes'] : NULL;
-    $this->container['AncestorIDs'] = isset($data['AncestorIDs']) ? $data['AncestorIDs'] : NULL;
-    $this->container['ParentID'] = isset($data['ParentID']) ? $data['ParentID'] : NULL;
+    $this->container['Phone'] = isset($data['Phone']) ? $data['Phone'] : NULL;
     $this->container['Type'] = isset($data['Type']) ? $data['Type'] : NULL;
   }
 
@@ -132,10 +126,6 @@ class Disease extends ModelCommon implements ModelInterface {
      * Any needed validation goes here. If a property requires no validation
      * (e.g. it's OK for it to be empty) then it may be omitted.
      */
-
-    if ($this->container['Name'] === NULL) {
-      $invalidProperties[] = "'Name' can't be NULL";
-    }
 
     return $invalidProperties;
   }

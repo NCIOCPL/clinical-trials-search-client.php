@@ -5,11 +5,11 @@ namespace NCIOCPL\ClinicalTrialSearch\Model;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Model\ModelInterface;
 
 /**
- * Model for the Disease objects.
+ * Model for the StructuredCriteriaInformation objects.
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */
-class Disease extends ModelCommon implements ModelInterface {
+class StructuredCriteriaInformation extends ModelCommon implements ModelInterface {
 
   const DISCRIMINATOR = NULL;
 
@@ -18,7 +18,7 @@ class Disease extends ModelCommon implements ModelInterface {
    *
    * @var string
    */
-  protected static $swaggerModelName = 'Disease';
+  protected static $swaggerModelName = 'StructuredCriteriaInformation';
 
   /**
    * Mapping property names to their types.
@@ -31,11 +31,13 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $swaggerTypes = [
-    'Name' => 'string',
-    'Codes' => 'string[]',
-    'AncestorIDs' => 'string[]',
-    'ParentID' => 'string[]',
-    'Type' => 'string[]',
+    'Gender' => 'string',
+    'MaxAgeStr' => 'string',
+    'MaxAgeInt' => 'integer',
+    'MaxAgeUnits' => 'string',
+    'MinAgeStr' => 'string',
+    'MinAgeInt' => 'integer',
+    'MinAgeUnits' => 'string',
   ];
 
   /**
@@ -46,11 +48,13 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $swaggerFormats = [
-    'Name' => NULL,
-    'Codes' => NULL,
-    'AncestorIDs' => NULL,
-    'ParentID' => NULL,
-    'Type' => NULL,
+    'Gender' => NULL,
+    'MaxAgeStr' => NULL,
+    'MaxAgeInt' => NULL,
+    'MaxAgeUnits' => NULL,
+    'MinAgeStr' => NULL,
+    'MinAgeInt' => NULL,
+    'MinAgeUnits' => NULL,
   ];
 
   /**
@@ -59,11 +63,13 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $attributeMap = [
-    'Name' => 'name',
-    'Codes' => 'codes',
-    'AncestorIDs' => 'ancestor_ids',
-    'ParentID' => 'parent_ids',
-    'Type' => 'type',
+    'Gender' => 'gender',
+    'MaxAgeStr' => 'max_age',
+    'MaxAgeInt' => 'max_age_number',
+    'MaxAgeUnits' => 'max_age_unit',
+    'MinAgeStr' => 'min_age',
+    'MinAgeInt' => 'min_age_number',
+    'MinAgeUnits' => 'min_age_unit',
   ];
 
   /**
@@ -76,11 +82,13 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $setters = [
-    'Name' => 'setName',
-    'Codes' => 'setCodes',
-    'AncestorIDs' => 'setAncestorIDs',
-    'ParentID' => 'setParentID',
-    'Type' => 'setType',
+    'Gender' => 'setGender',
+    'MaxAgeStr' => 'setMaxAgeStr',
+    'MaxAgeInt' => 'setMaxAgeInt',
+    'MaxAgeUnits' => 'setMaxAgeUnits',
+    'MinAgeStr' => 'setMinAgeStr',
+    'MinAgeInt' => 'setMinAgeInt',
+    'MinAgeUnits' => 'setMinAgeUnits',
   ];
 
   /**
@@ -93,11 +101,13 @@ class Disease extends ModelCommon implements ModelInterface {
    * @var string[]
    */
   protected static $getters = [
-    'Name' => 'getName',
-    'Codes' => 'getCodes',
-    'AncestorIDs' => 'getAncestorIDs',
-    'ParentID' => 'getParentID',
-    'Type' => 'getType',
+    'Gender' => 'getGender',
+    'MaxAgeStr' => 'getMaxAgeStr',
+    'MaxAgeInt' => 'getMaxAgeInt',
+    'MaxAgeUnits' => 'getMaxAgeUnits',
+    'MinAgeStr' => 'getMinAgeStr',
+    'MinAgeInt' => 'getMinAgeInt',
+    'MinAgeUnits' => 'getMinAgeUnits',
   ];
 
   /**
@@ -108,11 +118,13 @@ class Disease extends ModelCommon implements ModelInterface {
    *   from another instance.
    */
   public function __construct(array $data = NULL) {
-    $this->container['Name'] = isset($data['Name']) ? $data['Name'] : NULL;
-    $this->container['Codes'] = isset($data['Codes']) ? $data['Codes'] : NULL;
-    $this->container['AncestorIDs'] = isset($data['AncestorIDs']) ? $data['AncestorIDs'] : NULL;
-    $this->container['ParentID'] = isset($data['ParentID']) ? $data['ParentID'] : NULL;
-    $this->container['Type'] = isset($data['Type']) ? $data['Type'] : NULL;
+    $this->container['Gender'] = isset($data['Gender']) ? $data['Gender'] : NULL;
+    $this->container['MaxAgeStr'] = isset($data['MaxAgeStr']) ? $data['MaxAgeStr'] : NULL;
+    $this->container['MaxAgeInt'] = isset($data['MaxAgeInt']) ? $data['MaxAgeInt'] : NULL;
+    $this->container['MaxAgeUnits'] = isset($data['MaxAgeUnits']) ? $data['MaxAgeUnits'] : NULL;
+    $this->container['MinAgeStr'] = isset($data['MinAgeStr']) ? $data['MinAgeStr'] : NULL;
+    $this->container['MinAgeInt'] = isset($data['MinAgeInt']) ? $data['MinAgeInt'] : NULL;
+    $this->container['MinAgeUnits'] = isset($data['MinAgeUnits']) ? $data['MinAgeUnits'] : NULL;
   }
 
   /**
@@ -132,10 +144,6 @@ class Disease extends ModelCommon implements ModelInterface {
      * Any needed validation goes here. If a property requires no validation
      * (e.g. it's OK for it to be empty) then it may be omitted.
      */
-
-    if ($this->container['Name'] === NULL) {
-      $invalidProperties[] = "'Name' can't be NULL";
-    }
 
     return $invalidProperties;
   }

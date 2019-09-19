@@ -91,7 +91,7 @@ class Skeleton extends ModelCommon implements ModelInterface {
   protected static $getters = [
     'TermKey' => 'getKey',
     'Term' => 'getTerm',
-    'TermType' => 'getype',
+    'TermType' => 'getType',
     'Codes' => 'getCodes',
   ];
 
@@ -126,16 +126,6 @@ class Skeleton extends ModelCommon implements ModelInterface {
      * Any needed validation goes here. If a property requires no validation
      * (e.g. it's OK for it to be empty) then it may be omitted.
      */
-
-    if ($this->container['TermKey'] === NULL) {
-      $invalidProperties[] = "'TermKey' can't be NULL";
-    }
-    if ($this->container['Term'] === NULL) {
-      $invalidProperties[] = "'Term' can't be NULL";
-    }
-    if ($this->container['TermType'] === NULL) {
-      $invalidProperties[] = "'TermType' can't be NULL";
-    }
 
     return $invalidProperties;
   }
