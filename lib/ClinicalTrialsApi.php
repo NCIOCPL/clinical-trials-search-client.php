@@ -69,9 +69,7 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
   }
 
   /**
-   * Operation getTrialById.
-   *
-   * Get Trial.
+   * Retrieve the deails of a single clinical trial.
    *
    * @param string $id
    *   NCI ID or NCT ID of Trial. (required)
