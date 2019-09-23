@@ -10,17 +10,37 @@ The root API namespace is `NCIOCPL\ClinicalTrialSearch`
 
 All models appear in the `NCIOCPL\ClinicalTrialSearch\Model` namespace
 
-* `Term`
-* `TermsCollection`
+Please refer to [the project wiki's _Models_ page](https://github.com/NCIOCPL/cgov-clinical-trial-search/wiki/Models)
+for details of the model hierarchy.
 
 ### API Methods
 
-* `TermsApiInterface`
-  * `getTermByTermKey(term_key)` - Retrieves the term with supplied `term_key`.
+The complete and tested API methods are:
+
+* `ClinicalTrialsApi`
+  * `getTrialById($id)` - Retrieve the deails of a single clinical trial.
+* `DiseasesApi`
+  * `searchDiseasesByPost($searchDocument)` - Search for Diseases specified in a JSON document..
+* `TermsApi`
+  * `getTermByTermKey($term_key)` - Retrieves the term with supplied `term_key`.
   * `searchTermsByPost($searchDocument)` - Search for terms matching the criteria in `searchDocument`.
 
+Pleae refer to [the project wiki's _API Classes_ page](https://github.com/NCIOCPL/cgov-clinical-trial-search/wiki/API-Classes)
+for further details.
 
-## Testing
+## Helpful Scripts
+
+**Clean up**
+
+Delete all dependency files by running:
+
+```bash
+composer cgov-clean
+```
+
+**Run Tests**
+
+Run `phpunit` with the command:
 
 ```bash
 composer test
