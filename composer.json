@@ -1,6 +1,6 @@
 {
-    "name": "nciocpl/clinical-trial-search",
-    "description": "PHP client for consuming the NCI Clinnical Trial Search API",
+    "name": "nciocpl/clinical-trial-search-client.php",
+    "description": "PHP client for consuming the NCI Clinical Trial Search API",
     "type": "library",
     "minimum-stability": "dev",
     "prefer-stable": true,
