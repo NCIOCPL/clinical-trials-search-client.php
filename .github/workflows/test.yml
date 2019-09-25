@@ -1,0 +1,29 @@
+name: Test Package
+
+## Any PR should fire this off. There is no sense in testing a push
+## as if the push fails it does not undo the push.
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, macOS-latest]
+        php-version: [7.2, 7.3]
+    name: PHP ${{ matrix.php-version }} Test on ${{ matrix.os }}
+    steps:
+      ## Get code
+      - name: Checkout
+        uses: actions/checkout@master
+      ## Install PHP
+      - name: Install PHP
+        uses: shivammathur/setup-php@master
+        with:
+          php-version: ${{ matrix.php-version }}
+          extension-csv: mbstring, xdebug #optional
+          ini-values-csv: "post_max_size=256M, short_open_tag=On" #optional
+      - name: Composer Install
+        run: cd $GITHUB_WORKSPACE && composer install
+      - name: Test
+        run: cd $GITHUB_WORKSPACE && composer test
