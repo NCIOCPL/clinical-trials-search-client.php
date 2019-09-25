@@ -125,3 +125,7 @@ class MyModuleController extends ControllerBase {
     throw new NotFoundHttpException();
   }
 ```
+
+## Github Workflows
+This project has been enabled with a github actions workflow:
+* test - This runs composer install and then composer test. It should work ok.
