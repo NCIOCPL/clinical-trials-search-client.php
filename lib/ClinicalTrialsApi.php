@@ -1708,9 +1708,11 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
   }
 
   /**
-   * Operation searchTrialsByPost.
+   * Search for clinical trials using criteria specified in a JSON document.
    *
-   * Search Trials by POST.
+   * @param string $searchDocument
+   *   A JSON document containing search criteria. Property names may match
+   *    any of the parameters specified for searchTrialsByGet().
    *
    * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException
    *   On non-2xx response.
@@ -1719,15 +1721,17 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
    * @return mixed
    *   A ClinicalTrialsCollection object.
    */
-  public function searchTrialsByPost() {
-    list($response) = $this->searchTrialsByPostWithHttpInfo();
+  public function searchTrialsByPost($searchDocument) {
+    list($response) = $this->searchTrialsByPostWithHttpInfo($searchDocument);
     return $response;
   }
 
   /**
-   * Operation searchTrialsByPostWithHttpInfo.
+   * Internals of searchTrialsByPost().
    *
-   * Search Trials by POST.
+   * @param string $searchDocument
+   *   A JSON document containing search criteria. Property names may match
+   *    any of the parameters specified for searchTermsByGet().
    *
    * @throws \NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException
    *   On non-2xx response.
@@ -1737,9 +1741,9 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
    *   Deserialized data, HTTP status code, HTTP response headers
    *   (array of strings).
    */
-  public function searchTrialsByPostWithHttpInfo() {
+  public function searchTrialsByPostWithHttpInfo($searchDocument) {
     $returnType = '\NCIOCPL\ClinicalTrialSearch\Model\ClinicalTrialsCollection';
-    $request = $this->searchTrialsByPostRequest();
+    $request = $this->searchTrialsByPostRequest($searchDocument);
 
     try {
       $options = $this->createHttpClientOption();
@@ -1884,13 +1888,13 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
    * @return \GuzzleHttp\Psr7\Request
    *   The Request to submit.
    */
-  protected function searchTrialsByPostRequest() {
+  protected function searchTrialsByPostRequest($searchDocument) {
 
     $resourcePath = '/v1/clinical-trials';
     $formParams = [];
     $queryParams = [];
     $headerParams = [];
-    $httpBody = '';
+    $httpBody = $searchDocument;
     $multipart = FALSE;
 
     // Body params.
