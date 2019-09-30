@@ -19,6 +19,7 @@ The complete and tested API methods are:
 
 * `ClinicalTrialsApi`
   * `getTrialById($id)` - Retrieve the deails of a single clinical trial.
+  * `searchTrialsByPost($searchDocument)` - Search for trials matching the criteria in `searchDocument`.
 * `DiseasesApi`
   * `searchDiseasesByPost($searchDocument)` - Search for Diseases specified in a JSON document..
 * `TermsApi`
