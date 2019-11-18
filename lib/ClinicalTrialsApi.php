@@ -1818,8 +1818,8 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
    * @return \GuzzleHttp\Promise\PromiseInterface
    *   A Promise resolving to a ClinicalTrialsCollection object.
    */
-  public function searchTrialsByPostAsync() {
-    return $this->searchTrialsByPostAsyncWithHttpInfo()
+  public function searchTrialsByPostAsync($searchDocument) {
+    return $this->searchTrialsByPostAsyncWithHttpInfo($searchDocument)
       ->then(
               function ($response) {
                   return $response[0];
@@ -1837,9 +1837,9 @@ class ClinicalTrialsApi implements ClinicalTrialsApiInterface {
    * @return \GuzzleHttp\Promise\PromiseInterface
    *   A Promise resolving to a ClinicalTrialsCollection.
    */
-  public function searchTrialsByPostAsyncWithHttpInfo() {
+  public function searchTrialsByPostAsyncWithHttpInfo($searchDocument) {
     $returnType = '\NCIOCPL\ClinicalTrialSearch\Model\ClinicalTrialsCollection';
-    $request = $this->searchTrialsByPostRequest();
+    $request = $this->searchTrialsByPostRequest($searchDocument);
 
     return $this->client
       ->sendAsync($request, $this->createHttpClientOption())
