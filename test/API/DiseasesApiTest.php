@@ -1,6 +1,6 @@
 <?php
 
-namespace Test;
+namespace Test\API;
 
 use GuzzleHttp\Psr7\Response;
 use PHPUnit\Framework\TestCase;
@@ -8,6 +8,8 @@ use PHPUnit\Framework\TestCase;
 use NCIOCPL\ClinicalTrialSearch\DiseasesApi;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\Configuration;
+
+use Test\MockClient;
 
 /**
  * Tests for the Diseases Api methods.
