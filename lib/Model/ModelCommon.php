@@ -10,7 +10,7 @@ use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ObjectSerializer;
  *
  * @package NCIOCPL\ClinicalTrialSearch
  */
-class ModelCommon implements ArrayAccess {
+abstract class ModelCommon implements ArrayAccess {
 
   /**
    * Associative array for storing property values.
@@ -119,7 +119,12 @@ class ModelCommon implements ArrayAccess {
    *   The name of the property to retrieve.
    */
   public function __get($name) {
-    return $this->container[$name];
+    if (array_key_exists($name, $this->container)) {
+      return $this->container[$name];
+    }
+    else {
+      return NULL;
+    }
   }
 
   /**
