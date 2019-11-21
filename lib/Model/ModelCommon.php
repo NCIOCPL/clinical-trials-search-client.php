@@ -102,10 +102,10 @@ abstract class ModelCommon implements ArrayAccess {
     $field = substr($name, 3);
 
     if ($operation === 'get') {
-      return $this->container[$field];
+      return $this->__get($field);
     }
     elseif ($operation === 'set') {
-      $this->container[$field] = $arguments[0];
+      $this->__set($field, $arguments[0]);
     }
     else {
       throw new ApiException("Unknown method '${name}'.", 0);
@@ -137,6 +137,15 @@ abstract class ModelCommon implements ArrayAccess {
    */
   public function __set($name, $value) {
     $this->container[$name] = $value;
+  }
+
+  /**
+   * PHP "magic" method to to check whether a property is set.
+   *
+   * Allhas been set, vs. whether it's been set to NULL.
+   */
+  public function __isset($name) {
+    return array_key_exists($name, $this->container);
   }
 
   /**
