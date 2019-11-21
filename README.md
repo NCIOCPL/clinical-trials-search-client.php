@@ -56,14 +56,14 @@ to your `composer.json` file's "repositories" property.
   "repositories": {
       "clinical-trial-search": {
           "type": "vcs",
-          "url": "https://github.com/NCIOCPL/ClinicalTrialSearch-API"
+          "url": "https://github.com/NCIOCPL/clinical-trial-search.php"
       }
   }
 ```
 
 Next, from the command line, run:
 ```bash
-composer require nciocpl/clinical-trial-search
+composer require nciocpl/clinical-trial-search.php
 ```
 
 ## Usage
