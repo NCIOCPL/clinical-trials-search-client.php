@@ -4,6 +4,7 @@ namespace NCIOCPL\ClinicalTrialSearch\Model;
 
 use ArrayAccess;
 use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ObjectSerializer;
+use NCIOCPL\ClinicalTrialSearch\SwaggerGenerated\ApiException;
 
 /**
  * Common functionality for all models.
@@ -28,6 +29,17 @@ abstract class ModelCommon implements ArrayAccess {
   public function valid() {
     return count($this->listInvalidProperties()) === 0;
   }
+
+  /**
+   * Create a list of validation messages.
+   *
+   * Performs validation for any properties needing validation.
+   * (e.g. Is a required property present? Is the value within allowed ranges?)
+   *
+   * @return array
+   *   An array of messages describing invalid properties.
+   */
+  abstract public function listInvalidProperties();
 
   /**
    * Returns true if offset exists. False otherwise.
